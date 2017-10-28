@@ -1,0 +1,17 @@
+{
+    "perl"        : "6.*",
+    "name"        : "ArchLinux::AUR::Package::Wget",
+    "version"     : "*",
+    "author"      : "Andy Weidenbaum",
+    "description" : "Download AUR packages with wget",
+    "license"     : "Unlicense",
+    "source-type" : "git",
+    "source-url"  : "git://github.com/atweiden/wgetpkg.git",
+    "support"     : {
+        "bugtracker" : "https://github.com/atweiden/wgetpkg/issues",
+        "source"     : "https://github.com/atweiden/wgetpkg"
+    },
+    "provides" : {
+        "ArchLinux::AUR::Package::Wget" : "lib/ArchLinux/AUR/Package/Wget.pm"
+    }
+}
