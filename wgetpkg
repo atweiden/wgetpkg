@@ -1,0 +1,58 @@
+#!/bin/bash
+
+_base_url='https://aur.archlinux.org/cgit/aur.git/snapshot'
+
+_get_url_function() {
+  local _pkg
+  local _url
+
+  _pkg="$1"
+  _url="${_base_url}/${_pkg}.tar.gz"
+
+  echo "$_url"
+}
+
+_run_wgetpkg_function() {
+  local _pkg
+  local _url
+
+  _pkg="$(echo "$1" | tr -d '[:space:]')"
+  _url="$(_get_url_function "$_pkg")"
+
+  wget --no-verbose "$_url"
+}
+
+_wgetpkg_function() {
+  for _pkg in "$@"; do
+    _run_wgetpkg_function "$_pkg" &
+  done
+  wait
+}
+
+_usage_function() {
+  read -r -d '' _usage_string <<'EOF'
+Usage:
+  wgetpkg [-h|--help]
+  wgetpkg <pkg> <pkg>...
+
+Options:
+  -h, --help
+    print this help message
+EOF
+  echo "$_usage_string"
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -*)
+      _usage_function
+      exit 0
+      ;;
+    *)
+      _wgetpkg_function "$@"
+      exit 0
+      ;;
+  esac
+done
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

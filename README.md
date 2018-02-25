@@ -5,28 +5,13 @@ Download AUR pkgs with `wget`. Fetches tarball snapshot.
 
 ## Usage
 
-Clone wgetpkg:
-
 ```sh
-$ git wget https://github.com/atweiden/wgetpkg && cd wgetpkg
-$ export PERL6LIB=lib
-```
-
-Clone pkgs:
-
-```sh
-$ ./bin/wgetpkg \
+$ git clone https://github.com/atweiden/wgetpkg && cd wgetpkg
+$ ./wgetpkg \
     perl6-debugger-ui-commandline \
     perl6-terminal-ansicolor \
     perl6-grammar-debugger
 ```
-
-
-## Installation
-
-### Dependencies
-
-- Rakudo Perl6
 
 
 ## Licensing
